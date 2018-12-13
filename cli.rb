@@ -17,11 +17,13 @@ class CLI < Thor
 
   desc "generate_pdf", "generates a simple hello.pdf in the local directory"
   def generate_pdf
-    Prawn::Document.generate("function_results/hello.pdf") do
+    Prawn::Document.generate("function_results/hello.pdf", background: "#{Dir.pwd}/assets/background.png") do
 
-      pad_top(150) {
+      image "#{Dir.pwd}/assets/vehiculum_logo.png", scale: 0.4, position: :center, vposition: 30
+
+      pad_top(120) {
         font("Courier", size: 38) do
-          text "Dynamic PDF Creation", align: :center
+          text "Dynamic PDF Creation", align: :center, mode: :stroke
         end
       }
 
@@ -94,6 +96,20 @@ class CLI < Thor
       text "on the last move the cursor went directly to: #{cursor}"
 
       start_new_page
+
+      define_grid(columns: 2, rows: 7, gutter: 10)
+
+
+      grid(0, 0).show
+      grid(1, 0).show
+      grid(2, 0).show
+      grid(2, 1).show
+
+      grid([4, 0], [4, 1]).show
+
+      grid([5, 0], [5, 1]).bounding_box do
+        text "Adding some content to this multi_box.\n" + " _ " * 200
+      end
     end
   end
 end
