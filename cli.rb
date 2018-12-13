@@ -29,8 +29,9 @@ class CLI < Thor
       stroke_horizontal_rule
 
       pad_top(30) {
-        font("Courier", size: 18) do
-          text "A simple test case by Lenny", align: :center
+        font("Times-Roman", size: 22, style: :italic) do
+          text "A simple test case by <color rgb='ff0000'><link href='https://github.com/lpk1/'>Lenny</link></color>", align: :center,
+          inline_format: true
         end
       }
 
@@ -46,7 +47,7 @@ class CLI < Thor
       move_down 30
 
       column_box([0, cursor], columns: 2, width: bounds.width) do
-        text((<<-END.gsub(/\s+/, ' ')) * 3)
+        text((<<-END.gsub(/\s+/, ' ')) * 3, align: :justify, character_spacing: 0.5)
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
@@ -70,11 +71,7 @@ class CLI < Thor
           sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
           takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
           sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-          takimata sanctus est Lorem ipsum dolor sit amet.
+          dolore magna aliquyam erat, sed diam voluptua.
         END
       end
 
